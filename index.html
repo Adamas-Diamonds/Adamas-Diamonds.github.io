@@ -1,184 +1,109 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>星火夜芒的主页</title>
-    <link rel="icon" type="image/png" href="1786187009.png">
-    <style>
-        /* --- 全局样式重置 --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            height: 100vh;
-            width: 100vw;
-            overflow: hidden; /* 防止出现滚动条 */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-        }
-
-        /* --- 背景区域 (包含图片和渐变遮罩) --- */
-        .background-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; /* 放在最底层 */
-            
-            /* 这里设置背景图片，您可以替换 url 中的链接为您自己的图片 */
-            background-image: url('https://img2.baidu.com/it/u=3345750435,2422073076&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
-        /* 渐变遮罩层：让背景变暗，突出文字，同时制造渐变效果 */
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            /* 线性渐变：从半透明黑到深蓝紫色 */
-            background: linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(20, 10, 50, 0.8) 100%);
-            backdrop-filter: blur(5px); /* 毛玻璃模糊效果 */
-        }
-
-        /* --- 主要内容容器 --- */
-        .main-content {
-            text-align: center;
-            z-index: 1;
-            animation: fadeIn 1.5s ease-out; /* 入场动画 */
-        }
-
-        /* --- 核心点击文字样式 --- */
-        .main-link {
-            text-decoration: none;
-            color: #fff;
-            font-size: 3rem; /* 字体大小 */
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.5); /* 文字阴影 */
-            transition: all 0.3s ease;
-            display: inline-block;
-            cursor: pointer;
-            border-bottom: 2px solid transparent;
-        }
-
-        /* 鼠标悬停效果 */
-        .main-link:hover {
-            transform: translateY(-5px); /* 向上浮动 */
-            color: #a5f3fc; /* 变成浅青色 */
-            border-bottom: 2px solid #a5f3fc;
-            text-shadow: 0 0 20px rgba(165, 243, 252, 0.6); /* 发光效果 */
-        }
-
-        /* --- 友情链接区域 --- */
-        .friends-section {
-            margin-top: 60px;
-            padding: 20px 40px;
-            background: rgba(255, 255, 255, 0.1); /* 半透明白背景 */
-            border-radius: 20px;
-            backdrop-filter: blur(10px); /* 强毛玻璃效果 */
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-        }
-
-        .friends-title {
-            font-size: 0.9rem;
-            color: #ccc;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .friends-list {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .friend-item {
-            display: inline-block;
-            padding: 8px 16px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 50px; /* 胶囊形状 */
-            color: #ddd;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: all 0.3s;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .friend-item:hover {
-            background: rgba(255, 255, 255, 0.2);
-            color: #fff;
-            transform: scale(1.05);
-            box-shadow: 0 0 10px rgba(255,255,255,0.3);
-        }
-
-        /* --- 动画定义 --- */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- 移动端适配 --- */
-        @media (max-width: 768px) {
-            .main-link {
-                font-size: 2rem;
-            }
-            .friends-section {
-                margin: 40px 20px;
-                padding: 15px 20px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adamas-Diamonds 的主页</title>
+  <meta name="description" content="Adamas-Diamonds 的个人主页：CCW、GitHub 与联系方式。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    (function () {
+      var t = localStorage.getItem('ad-theme');
+      if (t !== 'light') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
 </head>
-<body>
+<body class="portal">
+  <div class="bg" aria-hidden="true"></div>
 
-    <!-- 背景层 -->
-    <div class="background-container">
-        <div class="overlay"></div>
-    </div>
-
-    <!-- 主要内容 -->
-    <div class="main-content">
-        <!-- 点击跳转区域 -->
-        <!-- 目标链接：https://www.ccw.site/student/69573ee886bbc77f84e41ee3 -->
-        <a href="https://www.ccw.site/student/69573ee886bbc77f84e41ee3" class="main-link" target="_blank">
-            星火夜芒@CCW
+  <main class="portal__main">
+    <div class="portal__title">
+      <span class="portal__avatar" aria-hidden="true"></span>
+      <h1 class="portal__name">
+        <a
+          class="hero__brand-link"
+          href="https://www.ccw.site/student/67cba6d73778fc282d630926"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Adamas-Diamonds，跳转到个人主页"
+        >
+          <span class="hero__brand-text">Adamas-Diamonds</span>
+          <span class="hero__brand-gradient" aria-hidden="true">Adamas-Diamonds</span>
         </a>
-
-        <!-- 友情链接区域 -->
-        <div class="friends-section">
-            <div class="friends-title">友情链接 / Friends</div>
-            <div class="friends-list">
-                <!-- 您可以在这里添加更多的链接 -->
-                <a href="https://www.ccwmoran.top/" class="friend-item">CCWMORAN慕然科技</a>
-                <a href="https://www.caellab.com/" class="friend-item">虚舟实验室</a>
-                <a href="https://www.chen-jin.dpdns.org/" class="friend-item">Chen-Jin的网站</a>
-                <a href="https://ccw-by.netlify.app/" class="friend-item">α冰＆β云的网站</a>
-                <a href="#" class="friend-item">友链空位</a>
-            </div>
-        </div>
+      </h1>
     </div>
 
-    <script>
-        // 简单的交互逻辑（其实用 href 就可以跳转，这里是为了演示如果需要 JS 控制）
-        document.querySelector('.main-link').addEventListener('click', function(e) {
-            console.log("正在跳转至 CCW 主页...");
-            // 如果需要额外的统计代码或者特效，可以在这里加
-        });
-    </script>
+    <p class="portal__bio">日拱一卒，功不唐捐</p>
+
+    <div class="portal__actions">
+      <a
+        class="portal__btn"
+        href="https://www.ccw.site/student/67cba6d73778fc282d630926"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        </svg>
+        CCW: Adamas-Diamonds
+      </a>
+
+      <a
+        class="portal__btn"
+        href="https://github.com/Adamas-Diamonds"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+        </svg>
+        GitHub: Adamas-Diamonds
+      </a>
+
+      <span class="portal__btn" title="QQ: 36******89">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+        </svg>
+        QQ: 36******89
+      </span>
+    </div>
+
+    <section class="friends" aria-label="友情链接">
+      <h2 class="friends__title">友情链接 / Friends</h2>
+      <div class="friends__grid">
+        <!--
+          友链使用说明：共预留 10 个接口。
+          把下方任意一个 <span class="friend-item friend-item--empty"> 替换为：
+          <a class="friend-item" href="https://好友的网址" target="_blank" rel="noopener noreferrer">好友昵称</a>
+          已填写的链接即可点击跳转到好友网页。
+        -->
+        <a href="https://www.ccwmoran.top/" class="friend-item" target="_blank" rel="noopener noreferrer">CCWMORAN慕然科技</a>
+        <a href="https://www.caellab.com/" class="friend-item" target="_blank" rel="noopener noreferrer">虚舟实验室</a>
+        <a href="https://www.chen-jin.dpdns.org/" class="friend-item" target="_blank" rel="noopener noreferrer">Chen-Jin的网站</a>
+        <a href="https://ccw-by.netlify.app/" class="friend-item" target="_blank" rel="noopener noreferrer">α冰＆β云的网站</a>
+        <span class="friend-item friend-item--empty">友链空位</span>
+        <span class="friend-item friend-item--empty">友链空位</span>
+        <span class="friend-item friend-item--empty">友链空位</span>
+        <span class="friend-item friend-item--empty">友链空位</span>
+        <span class="friend-item friend-item--empty">友链空位</span>
+        <span class="friend-item friend-item--empty">友链空位</span>
+      </div>
+    </section>
+
+    <nav class="portal__bottom" aria-label="站内导航">
+      <a class="portal__link" href="about.html" target="_self">关于我</a>
+    </nav>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
